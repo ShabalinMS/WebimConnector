@@ -36,6 +36,21 @@ namespace WebimConnector
 				}
 			}
 
+			if (action.Equals("chats"))
+			{
+				foreach (Chats chat in ImportChatsHandler.GetChats())
+				{
+					Console.WriteLine($"----------------------------------");
+					Console.WriteLine($"chat: {chat.Id} {chat.operator_id}");
+					Console.WriteLine($"contact: {chat.visitor.fields.Id} {chat.visitor.fields.Phone} {chat.visitor.fields.Email}");
+					foreach (MessageModel message in chat.Messages)
+					{
+						Console.WriteLine($"message: {message.Id} {message.King} {message.CreatedAt} {message.Message}");
+					}
+					
+				}
+			}
+
 
 			Console.Read();
         }
